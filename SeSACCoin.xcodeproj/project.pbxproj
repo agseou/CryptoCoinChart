@@ -16,6 +16,11 @@
 		A09E2B0B2B8DB1B000961823 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B0A2B8DB1B000961823 /* BaseTableViewCell.swift */; };
 		A09E2B0D2B8DB1F400961823 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B0C2B8DB1F400961823 /* BaseCollectionViewCell.swift */; };
 		A09E2B132B8DB2CE00961823 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B122B8DB2CE00961823 /* SearchViewController.swift */; };
+		A09E2B162B8DB2EE00961823 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A09E2B152B8DB2EE00961823 /* SnapKit */; };
+		A09E2B192B8DB2FA00961823 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A09E2B182B8DB2FA00961823 /* Alamofire */; };
+		A09E2B1C2B8DB31B00961823 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A09E2B1B2B8DB31B00961823 /* Realm */; };
+		A09E2B1E2B8DB31B00961823 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A09E2B1D2B8DB31B00961823 /* RealmSwift */; };
+		A09E2B212B8DB32800961823 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = A09E2B202B8DB32800961823 /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A09E2B1E2B8DB31B00961823 /* RealmSwift in Frameworks */,
+				A09E2B1C2B8DB31B00961823 /* Realm in Frameworks */,
+				A09E2B162B8DB2EE00961823 /* SnapKit in Frameworks */,
+				A09E2B212B8DB32800961823 /* Toast in Frameworks */,
+				A09E2B192B8DB2FA00961823 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +150,13 @@
 			dependencies = (
 			);
 			name = SeSACCoin;
+			packageProductDependencies = (
+				A09E2B152B8DB2EE00961823 /* SnapKit */,
+				A09E2B182B8DB2FA00961823 /* Alamofire */,
+				A09E2B1B2B8DB31B00961823 /* Realm */,
+				A09E2B1D2B8DB31B00961823 /* RealmSwift */,
+				A09E2B202B8DB32800961823 /* Toast */,
+			);
 			productName = SeSACCoin;
 			productReference = A09E2AEF2B8DA9AD00961823 /* SeSACCoin.app */;
 			productType = "com.apple.product-type.application";
@@ -168,6 +185,12 @@
 				Base,
 			);
 			mainGroup = A09E2AE62B8DA9AD00961823;
+			packageReferences = (
+				A09E2B142B8DB2EE00961823 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				A09E2B172B8DB2FA00961823 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A09E2B1A2B8DB31B00961823 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				A09E2B1F2B8DB32800961823 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			productRefGroup = A09E2AF02B8DA9AD00961823 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -433,6 +456,69 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A09E2B142B8DB2EE00961823 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		A09E2B172B8DB2FA00961823 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		A09E2B1A2B8DB31B00961823 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.47.0;
+			};
+		};
+		A09E2B1F2B8DB32800961823 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A09E2B152B8DB2EE00961823 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A09E2B142B8DB2EE00961823 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		A09E2B182B8DB2FA00961823 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A09E2B172B8DB2FA00961823 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A09E2B1B2B8DB31B00961823 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A09E2B1A2B8DB31B00961823 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		A09E2B1D2B8DB31B00961823 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A09E2B1A2B8DB31B00961823 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		A09E2B202B8DB32800961823 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A09E2B1F2B8DB32800961823 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A09E2AE72B8DA9AD00961823 /* Project object */;
 }
