@@ -38,6 +38,10 @@
 		A09E2B472B8DFAF600961823 /* CoinInfoBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B462B8DFAF600961823 /* CoinInfoBox.swift */; };
 		A09E2B492B8E03ED00961823 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B482B8E03ED00961823 /* Market.swift */; };
 		A09E2B4B2B8E058400961823 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B4A2B8E058400961823 /* ChartViewModel.swift */; };
+		A09E2B4E2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B4D2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift */; };
+		A09E2B702B8EFDD500961823 /* TrendingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B6F2B8EFDD500961823 /* TrendingSection.swift */; };
+		A09E2B722B8F020D00961823 /* TempMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B712B8F020D00961823 /* TempMock.swift */; };
+		A09E2B742B8F03E500961823 /* TopRankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +72,10 @@
 		A09E2B462B8DFAF600961823 /* CoinInfoBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoBox.swift; sourceTree = "<group>"; };
 		A09E2B482B8E03ED00961823 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		A09E2B4A2B8E058400961823 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		A09E2B4D2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectoinViewCell.swift; sourceTree = "<group>"; };
+		A09E2B6F2B8EFDD500961823 /* TrendingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingSection.swift; sourceTree = "<group>"; };
+		A09E2B712B8F020D00961823 /* TempMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMock.swift; sourceTree = "<group>"; };
+		A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRankCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +155,7 @@
 		A09E2B0E2B8DB28C00961823 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				A09E2B292B8DB5BB00961823 /* Cells */,
+				A09E2B292B8DB5BB00961823 /* Cell */,
 				A09E2B122B8DB2CE00961823 /* SearchViewController.swift */,
 				A09E2B252B8DB43000961823 /* SearchViewModel.swift */,
 			);
@@ -158,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				A09E2B2E2B8DBDF600961823 /* TrendingViewController.swift */,
+				A09E2B6F2B8EFDD500961823 /* TrendingSection.swift */,
+				A09E2B712B8F020D00961823 /* TempMock.swift */,
 				A09E2B452B8DF83500961823 /* Cell */,
 			);
 			path = Trending;
@@ -166,6 +176,7 @@
 		A09E2B102B8DB2A300961823 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
+				A09E2B4C2B8EBB4B00961823 /* Cell */,
 				A09E2B302B8DBE0F00961823 /* FavoriteViewController.swift */,
 			);
 			path = Favorite;
@@ -188,12 +199,12 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		A09E2B292B8DB5BB00961823 /* Cells */ = {
+		A09E2B292B8DB5BB00961823 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				A09E2B272B8DB5B800961823 /* SearchTableViewCell.swift */,
 			);
-			path = Cells;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		A09E2B322B8DBE3200961823 /* Profile */ = {
@@ -236,6 +247,15 @@
 			isa = PBXGroup;
 			children = (
 				A09E2B432B8DF83300961823 /* MyFavoriteCollectionViewCell.swift */,
+				A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A09E2B4C2B8EBB4B00961823 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A09E2B4D2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -326,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A09E2B722B8F020D00961823 /* TempMock.swift in Sources */,
 				A09E2B2D2B8DBCEB00961823 /* CustomNavigationController.swift in Sources */,
 				A09E2B3D2B8DC5B500961823 /* CoinAPI.swift in Sources */,
 				A09E2B492B8E03ED00961823 /* Market.swift in Sources */,
@@ -334,11 +355,14 @@
 				A09E2B2B2B8DBCC200961823 /* CustomTabBarController.swift in Sources */,
 				A09E2B342B8DBE5E00961823 /* ProfileViewController.swift in Sources */,
 				A09E2B082B8DAA8900961823 /* BaseViewController.swift in Sources */,
+				A09E2B702B8EFDD500961823 /* TrendingSection.swift in Sources */,
 				A09E2B2F2B8DBDF600961823 /* TrendingViewController.swift in Sources */,
 				A09E2B262B8DB43000961823 /* SearchViewModel.swift in Sources */,
 				A09E2AF32B8DA9AD00961823 /* AppDelegate.swift in Sources */,
 				A09E2B242B8DB3EE00961823 /* Observable.swift in Sources */,
+				A09E2B742B8F03E500961823 /* TopRankCollectionViewCell.swift in Sources */,
 				A09E2B312B8DBE0F00961823 /* FavoriteViewController.swift in Sources */,
+				A09E2B4E2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift in Sources */,
 				A09E2B4B2B8E058400961823 /* ChartViewModel.swift in Sources */,
 				A09E2B0B2B8DB1B000961823 /* BaseTableViewCell.swift in Sources */,
 				A09E2B472B8DFAF600961823 /* CoinInfoBox.swift in Sources */,

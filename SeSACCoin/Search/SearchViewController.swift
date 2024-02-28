@@ -13,7 +13,7 @@ class SearchViewController: BaseViewController {
     let viewModel = SearchViewModel()
     
     let searchBar = UISearchBar()
-    let tableView = UITableView()
+    private let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

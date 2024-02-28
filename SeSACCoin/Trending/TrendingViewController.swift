@@ -8,39 +8,124 @@
 import UIKit
 
 class TrendingViewController: BaseViewController {
-
-    let tableView = UITableView()
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
+    
+    private var dataSource = TempMock.dataSource
+    
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { section, env -> NSCollectionLayoutSection? in
+        switch self.dataSource[section] {
+        case .favorite:
+            return TrendingViewController.setMyFavoriteCollectionViewLayout()
+        case .topRank:
+            return TrendingViewController.setTopRankCollectionViewLayout()
+        }
+      }
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureHierarchy() {
-        view.addSubview(tableView)
+        view.addSubview(collectionView)
     }
     
     override func configureView() {
         super.configureView()
         
+        navigationItem.title = "Crypto Coin"
+        
+        collectionView.dataSource = self
+        collectionView.register(MyFavoriteCollectionViewCell.self, forCellWithReuseIdentifier: "MyFavoriteCollectionViewCell")
+        collectionView.register(TopRankCollectionViewCell.self, forCellWithReuseIdentifier: "TopRankCollectionViewCell")
     }
     
     override func setConstraints() {
-        tableView.snp.makeConstraints {
+        collectionView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
-    static func setCollectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width / 1.5
-        layout.itemSize = CGSize(width: width, height: width * 0.7)
-        layout.minimumLineSpacing = 0
-        layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 10
-        layout.sectionInset = .zero
-        return layout
+    static func setMyFavoriteCollectionViewLayout() -> NSCollectionLayoutSection {
+        // item
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.5),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8)
+        
+        // group
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.9),
+            heightDimension: .fractionalHeight(0.3)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        
+        // section
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        //section.boundarySupplementaryItems = [header, footer]
+        return section
     }
+    
+    static func setTopRankCollectionViewLayout() -> NSCollectionLayoutSection {
+        // item
+          let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+          )
+          let item = NSCollectionLayoutItem(layoutSize: itemSize)
+          item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8)
+          let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.9),
+            heightDimension: .fractionalHeight(1.0/4.0)
+          )
+          
+          // group
+          let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 4
+          )
+          
+          // section
+          let section = NSCollectionLayoutSection(group: group)
+          section.orthogonalScrollingBehavior = .continuous
+          return section
+    }
+    
+}
 
+extension TrendingViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return dataSource.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch dataSource[section] {
+        case let .favorite(items):
+            return items.count
+        case let .topRank(items):
+            return items.count
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch self.dataSource[indexPath.section] {
+        case let .favorite(items):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyFavoriteCollectionViewCell", for: indexPath) as! MyFavoriteCollectionViewCell
+            
+            return cell
+        case let .topRank(items):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopRankCollectionViewCell", for: indexPath) as! TopRankCollectionViewCell
+            
+            return cell
+        }
+    }
+    
 }

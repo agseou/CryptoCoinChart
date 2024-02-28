@@ -24,6 +24,7 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell {
     override func setConstraints() {
         coinInfo.snp.makeConstraints {
             $0.left.top.equalTo(contentView).offset(10)
+            $0.right.top.equalTo(contentView)
         }
     }
 }
