@@ -44,7 +44,10 @@ enum CoinAPI {
         case .Search(let query):
             ["query": query]
         case .Market(let ids):
-            ["vs_currency": "krw", "ids": ids]
+            ["vs_currency": "krw",
+             "ids": ids,
+             "sparkline": "true",
+             "locale": "ko"]
         }
     }
 }

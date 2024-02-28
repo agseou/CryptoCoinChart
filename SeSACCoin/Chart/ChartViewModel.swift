@@ -10,7 +10,7 @@ import Foundation
 class ChartViewModel {
     
     var inputID: Observable<String?> = Observable(nil)
-    var resultData: Observable<Market?> = Observable(nil)
+    var resultData: Observable<[Market]?> = Observable(nil)
     
     init() {
         inputID.bind { id in
@@ -20,8 +20,9 @@ class ChartViewModel {
     }
     
     private func fetchData(id: String) {
-        CoinAPIManager.shared.request(type: Market.self, api: .Market(ids: id)) { data in
+        CoinAPIManager.shared.request(type: [Market].self, api: .Market(ids: id)) { data in
             self.resultData.value = data
+            print(data)
         }
     }
     

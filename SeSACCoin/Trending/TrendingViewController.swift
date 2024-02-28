@@ -47,6 +47,7 @@ class TrendingViewController: BaseViewController {
         }
     }
     
+    //즐겨찾기 section Layout
     static func setMyFavoriteCollectionViewLayout() -> NSCollectionLayoutSection {
         // item
         let itemSize = NSCollectionLayoutSize(
@@ -86,7 +87,7 @@ class TrendingViewController: BaseViewController {
         
     }
     
-    //
+    // Top 랭킹 section 레이아웃
     static func setTopRankCollectionViewLayout() -> NSCollectionLayoutSection {
         // item
         let itemSize = NSCollectionLayoutSize(

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Charts
+import DGCharts
 
 class ChartViewController: BaseViewController {
 
@@ -23,14 +25,16 @@ class ChartViewController: BaseViewController {
     let atl = UILabel() // 신저점
     let last_updated = UILabel() // 코인 시장 업데이트 시각
     
+    private var coinChartView = LineChartView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.inputID.value = ids
         viewModel.resultData.bind { value in
             guard let value = value else { return }
-            self.name.text = value.name
-            self.current_price.text = String(value.current_price)
-            self.price_change_percentage_24h.text = String(value.price_change_percentage_24h)
+            self.name.text = value[0].name
+            self.current_price.text = String(value[0].current_price)
+            self.price_change_percentage_24h.text = String(value[0].price_change_percentage_24h)
         }
     }
     
@@ -38,22 +42,24 @@ class ChartViewController: BaseViewController {
         view.addSubview(name)
         view.addSubview(current_price)
         view.addSubview(price_change_percentage_24h)
+        view.addSubview(coinChartView)
     }
     
     override func configureView() {
         super.configureView()
         
-        name.text = "코인 이름"
+        //name.text = "코인 이름"
         name.textColor = .mainLabel
         name.font = .systemFont(ofSize: 32, weight: .black)
         
-        current_price.text = "코인 현재가"
+        //current_price.text = "코인 현재가"
         current_price.textColor = .mainLabel
         current_price.font = .systemFont(ofSize: 32, weight: .black)
         
-        price_change_percentage_24h.text = "코인 변동폭"
+        //price_change_percentage_24h.text = "코인 변동폭"
         price_change_percentage_24h.textColor = .redLabel
         
+        coinChartView.backgroundColor = .yellow
     }
 
     override func setConstraints() {
@@ -71,4 +77,10 @@ class ChartViewController: BaseViewController {
         }
     }
 
+}
+
+extension ChartViewController: ChartViewDelegate {
+    
+    
+    
 }

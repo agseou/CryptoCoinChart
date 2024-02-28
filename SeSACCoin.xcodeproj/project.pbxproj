@@ -45,6 +45,8 @@
 		A09E2B762B8F1DAD00961823 /* SeparatorCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B752B8F1DAD00961823 /* SeparatorCollectionReusableView.swift */; };
 		A09E2B782B8F22E100961823 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */; };
 		A09E2B7A2B8F23AE00961823 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B792B8F23AE00961823 /* BaseCollectionReusableView.swift */; };
+		A09E2B7C2B8F281700961823 /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B7B2B8F281700961823 /* Trending.swift */; };
+		A09E2B7F2B8F371000961823 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = A09E2B7E2B8F371000961823 /* DGCharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,7 @@
 		A09E2B752B8F1DAD00961823 /* SeparatorCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCollectionReusableView.swift; sourceTree = "<group>"; };
 		A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		A09E2B792B8F23AE00961823 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
+		A09E2B7B2B8F281700961823 /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 				A09E2B1C2B8DB31B00961823 /* Realm in Frameworks */,
 				A09E2B162B8DB2EE00961823 /* SnapKit in Frameworks */,
 				A09E2B212B8DB32800961823 /* Toast in Frameworks */,
+				A09E2B7F2B8F371000961823 /* DGCharts in Frameworks */,
 				A09E2B192B8DB2FA00961823 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +240,7 @@
 			children = (
 				A09E2B382B8DC40A00961823 /* Search.swift */,
 				A09E2B482B8E03ED00961823 /* Market.swift */,
+				A09E2B7B2B8F281700961823 /* Trending.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 				A09E2B1D2B8DB31B00961823 /* RealmSwift */,
 				A09E2B202B8DB32800961823 /* Toast */,
 				A09E2B412B8DDDE100961823 /* Kingfisher */,
+				A09E2B7E2B8F371000961823 /* DGCharts */,
 			);
 			productName = SeSACCoin;
 			productReference = A09E2AEF2B8DA9AD00961823 /* SeSACCoin.app */;
@@ -327,6 +333,7 @@
 				A09E2B1A2B8DB31B00961823 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				A09E2B1F2B8DB32800961823 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				A09E2B402B8DDDE100961823 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A09E2B7D2B8F371000961823 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = A09E2AF02B8DA9AD00961823 /* Products */;
 			projectDirPath = "";
@@ -367,6 +374,7 @@
 				A09E2B702B8EFDD500961823 /* TrendingSection.swift in Sources */,
 				A09E2B2F2B8DBDF600961823 /* TrendingViewController.swift in Sources */,
 				A09E2B262B8DB43000961823 /* SearchViewModel.swift in Sources */,
+				A09E2B7C2B8F281700961823 /* Trending.swift in Sources */,
 				A09E2AF32B8DA9AD00961823 /* AppDelegate.swift in Sources */,
 				A09E2B242B8DB3EE00961823 /* Observable.swift in Sources */,
 				A09E2B742B8F03E500961823 /* TopRankCollectionViewCell.swift in Sources */,
@@ -658,6 +666,14 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+		A09E2B7D2B8F371000961823 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -690,6 +706,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A09E2B402B8DDDE100961823 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		A09E2B7E2B8F371000961823 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A09E2B7D2B8F371000961823 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

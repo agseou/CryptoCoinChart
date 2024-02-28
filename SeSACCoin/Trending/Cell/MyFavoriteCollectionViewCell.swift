@@ -45,7 +45,7 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell {
         }
         stackView.snp.makeConstraints {
             $0.top.greaterThanOrEqualTo(coinInfo.snp.bottom).offset(20)
-            $0.horizontalEdges.bottom.equalTo(contentView).inset(10)
+            $0.horizontalEdges.equalTo(contentView).inset(10)
             $0.bottom.equalTo(contentView).inset(15)
         }
     }
