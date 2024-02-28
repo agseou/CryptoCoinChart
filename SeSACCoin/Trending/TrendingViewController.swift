@@ -18,7 +18,7 @@ class TrendingViewController: BaseViewController {
         case .topRank:
             return TrendingViewController.setTopRankCollectionViewLayout()
         }
-      }
+    }
     )
     
     override func viewDidLoad() {
@@ -38,6 +38,7 @@ class TrendingViewController: BaseViewController {
         collectionView.dataSource = self
         collectionView.register(MyFavoriteCollectionViewCell.self, forCellWithReuseIdentifier: "MyFavoriteCollectionViewCell")
         collectionView.register(TopRankCollectionViewCell.self, forCellWithReuseIdentifier: "TopRankCollectionViewCell")
+        collectionView.register(HeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionViewCell")
     }
     
     override func setConstraints() {
@@ -57,7 +58,7 @@ class TrendingViewController: BaseViewController {
         
         // group
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.9),
+            widthDimension: .fractionalWidth(1.2),
             heightDimension: .fractionalHeight(0.3)
         )
         let group = NSCollectionLayoutGroup.horizontal(
@@ -65,47 +66,78 @@ class TrendingViewController: BaseViewController {
             subitems: [item]
         )
         
+        // header
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(40)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        
+        // section
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [header]
+        section.orthogonalScrollingBehavior = .continuous
+        return section
+        
+        
+    }
+    
+    //
+    static func setTopRankCollectionViewLayout() -> NSCollectionLayoutSection {
+        // item
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8)
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.9),
+            heightDimension: .fractionalHeight(1.0/3.0)
+        )
+        
+        // group
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 3
+        )
+        
+        // header
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(40)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        
         // section
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        //section.boundarySupplementaryItems = [header, footer]
+        section.boundarySupplementaryItems = [header]
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
         return section
-    }
-    
-    static func setTopRankCollectionViewLayout() -> NSCollectionLayoutSection {
-        // item
-          let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-          )
-          let item = NSCollectionLayoutItem(layoutSize: itemSize)
-          item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8)
-          let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.9),
-            heightDimension: .fractionalHeight(1.0/4.0)
-          )
-          
-          // group
-          let group = NSCollectionLayoutGroup.vertical(
-            layoutSize: groupSize,
-            subitem: item,
-            count: 4
-          )
-          
-          // section
-          let section = NSCollectionLayoutSection(group: group)
-          section.orthogonalScrollingBehavior = .continuous
-          return section
     }
     
 }
 
+
+// MARK: - UICollectionViewDataSourcce
 extension TrendingViewController: UICollectionViewDataSource {
     
+    // numberOfSections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return dataSource.count
     }
     
+    // numberOfItemsInSection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch dataSource[section] {
         case let .favorite(items):
@@ -115,6 +147,7 @@ extension TrendingViewController: UICollectionViewDataSource {
         }
     }
     
+    // cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch self.dataSource[indexPath.section] {
         case let .favorite(items):
@@ -125,6 +158,17 @@ extension TrendingViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopRankCollectionViewCell", for: indexPath) as! TopRankCollectionViewCell
             
             return cell
+        }
+    }
+    
+    // viewForSupplementaryElementOfKind -> Header, Footer
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+          let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionViewCell", for: indexPath) as! HeaderCollectionViewCell
+          return header
+        default:
+          return UICollectionReusableView()
         }
     }
     

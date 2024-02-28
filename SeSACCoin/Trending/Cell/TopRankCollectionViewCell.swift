@@ -24,6 +24,10 @@ class TopRankCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
+        rank.textColor = .mainLabel
+        rank.font = .systemFont(ofSize: 30, weight: .black)
+        rank.text = "1"
+        
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 2
@@ -43,7 +47,7 @@ class TopRankCollectionViewCell: BaseCollectionViewCell {
         }
         coinInfo.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
-            $0.left.equalTo(rank.snp.right)
+            $0.left.equalTo(rank.snp.right).offset(10)
         }
         stackView.snp.makeConstraints {
             $0.centerY.equalTo(contentView)

@@ -42,6 +42,9 @@
 		A09E2B702B8EFDD500961823 /* TrendingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B6F2B8EFDD500961823 /* TrendingSection.swift */; };
 		A09E2B722B8F020D00961823 /* TempMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B712B8F020D00961823 /* TempMock.swift */; };
 		A09E2B742B8F03E500961823 /* TopRankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */; };
+		A09E2B762B8F1DAD00961823 /* SeparatorCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B752B8F1DAD00961823 /* SeparatorCollectionReusableView.swift */; };
+		A09E2B782B8F22E100961823 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */; };
+		A09E2B7A2B8F23AE00961823 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B792B8F23AE00961823 /* BaseCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +79,9 @@
 		A09E2B6F2B8EFDD500961823 /* TrendingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingSection.swift; sourceTree = "<group>"; };
 		A09E2B712B8F020D00961823 /* TempMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMock.swift; sourceTree = "<group>"; };
 		A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRankCollectionViewCell.swift; sourceTree = "<group>"; };
+		A09E2B752B8F1DAD00961823 /* SeparatorCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCollectionReusableView.swift; sourceTree = "<group>"; };
+		A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		A09E2B792B8F23AE00961823 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,7 @@
 				A09E2B072B8DAA8900961823 /* BaseViewController.swift */,
 				A09E2B0A2B8DB1B000961823 /* BaseTableViewCell.swift */,
 				A09E2B0C2B8DB1F400961823 /* BaseCollectionViewCell.swift */,
+				A09E2B792B8F23AE00961823 /* BaseCollectionReusableView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -248,6 +255,8 @@
 			children = (
 				A09E2B432B8DF83300961823 /* MyFavoriteCollectionViewCell.swift */,
 				A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */,
+				A09E2B752B8F1DAD00961823 /* SeparatorCollectionReusableView.swift */,
+				A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -363,12 +372,15 @@
 				A09E2B742B8F03E500961823 /* TopRankCollectionViewCell.swift in Sources */,
 				A09E2B312B8DBE0F00961823 /* FavoriteViewController.swift in Sources */,
 				A09E2B4E2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift in Sources */,
+				A09E2B782B8F22E100961823 /* HeaderCollectionViewCell.swift in Sources */,
 				A09E2B4B2B8E058400961823 /* ChartViewModel.swift in Sources */,
 				A09E2B0B2B8DB1B000961823 /* BaseTableViewCell.swift in Sources */,
 				A09E2B472B8DFAF600961823 /* CoinInfoBox.swift in Sources */,
 				A09E2B3B2B8DC44B00961823 /* CoinAPIManager.swift in Sources */,
 				A09E2B442B8DF83300961823 /* MyFavoriteCollectionViewCell.swift in Sources */,
+				A09E2B7A2B8F23AE00961823 /* BaseCollectionReusableView.swift in Sources */,
 				A09E2AF52B8DA9AD00961823 /* SceneDelegate.swift in Sources */,
+				A09E2B762B8F1DAD00961823 /* SeparatorCollectionReusableView.swift in Sources */,
 				A09E2B392B8DC40A00961823 /* Search.swift in Sources */,
 				A09E2B0D2B8DB1F400961823 /* BaseCollectionViewCell.swift in Sources */,
 				A09E2B362B8DC08500961823 /* ChartViewController.swift in Sources */,
