@@ -6,16 +6,37 @@
 //
 
 import UIKit
+import RealmSwift
+import Kingfisher
+
+enum TrendingSection {
+    case favorites([Favorite])
+    case coinTopRank([Item])
+    case nftTopRank([Nft])
+    
+    var header: String {
+        switch self {
+        case .favorites(let array):
+            return "My Favorite"
+        case .coinTopRank(let array):
+            return "Top15 Coin"
+        case .nftTopRank(let array):
+            return "Top7 NFT"
+        }
+    }
+}
+
 
 class TrendingViewController: BaseViewController {
     
-    private var dataSource = TempMock.dataSource
-    
+    let viewModel = TrendingViewModel()
+    private var dataSource: [TrendingSection] = []
+
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { section, env -> NSCollectionLayoutSection? in
         switch self.dataSource[section] {
-        case .favorite:
+        case .favorites:
             return TrendingViewController.setMyFavoriteCollectionViewLayout()
-        case .topRank:
+        case .coinTopRank, .nftTopRank:
             return TrendingViewController.setTopRankCollectionViewLayout()
         }
     }
@@ -23,7 +44,12 @@ class TrendingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.inputViewDidLoadTrigger.value = ()
+        viewModel.outputsections.bind { data in
+            self.dataSource = data
+            self.collectionView.reloadData()
+        }
+        print(dataSource)
     }
     
     override func configureHierarchy() {
@@ -122,10 +148,10 @@ class TrendingViewController: BaseViewController {
         
         // section
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
+        section.orthogonalScrollingBehavior = .groupPaging
         section.boundarySupplementaryItems = [header]
         section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 5)
-        section.interGroupSpacing = 30   
+        section.interGroupSpacing = 30
         return section
     }
     
@@ -143,9 +169,11 @@ extension TrendingViewController: UICollectionViewDataSource {
     // numberOfItemsInSection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch dataSource[section] {
-        case let .favorite(items):
+        case .favorites(let items):
             return items.count
-        case let .topRank(items):
+        case .coinTopRank(let items):
+            return items.count
+        case .nftTopRank(let items):
             return items.count
         }
     }
@@ -153,12 +181,43 @@ extension TrendingViewController: UICollectionViewDataSource {
     // cellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch self.dataSource[indexPath.section] {
-        case let .favorite(items):
+        case .favorites(let items):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyFavoriteCollectionViewCell", for: indexPath) as! MyFavoriteCollectionViewCell
             
+            let data = items[indexPath.item]
+            
+            cell.coinInfo.coinImage.kf.setImage(with: URL(string: data.image))
+            cell.coinInfo.nameLabel.text = data.name
+            cell.coinInfo.symbolLabel.text = data.symbol
+            cell.price.text = data.current_price.description
+            cell.price_change_percentage.text = data.price_change_percentage.description
+            
             return cell
-        case let .topRank(items):
+        case .coinTopRank(let group):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopRankCollectionViewCell", for: indexPath) as! TopRankCollectionViewCell
+            
+            let data = group[indexPath.item]
+            
+            cell.rank.text = String(indexPath.item + 1)
+            cell.coinInfo.coinImage.kf.setImage(with: URL(string: data.small))
+            cell.coinInfo.nameLabel.text = data.name
+            cell.coinInfo.symbolLabel.text = data.symbol
+            cell.price.text = data.data.price
+            cell.price_change_percentage.text = data.data.price_change_percentage_24h.krw.description
+            
+            return cell
+            
+        case .nftTopRank(let group):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopRankCollectionViewCell", for: indexPath) as! TopRankCollectionViewCell
+            
+            let data = group[indexPath.item]
+            
+            cell.rank.text = String(indexPath.item + 1)
+            cell.coinInfo.coinImage.kf.setImage(with: URL(string: data.thumb))
+            cell.coinInfo.nameLabel.text = data.name
+            cell.coinInfo.symbolLabel.text = data.symbol
+            cell.price.text = data.data.floor_price.description
+            cell.price_change_percentage.text = data.data.floor_price_in_usd_24h_percentage_change.description
             
             return cell
         }
@@ -168,10 +227,13 @@ extension TrendingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-          let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionViewCell", for: indexPath) as! HeaderCollectionViewCell
-          return header
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionViewCell", for: indexPath) as! HeaderCollectionViewCell
+            
+            header.headerLabel.text = self.dataSource[indexPath.section].header
+            
+            return header
         default:
-          return UICollectionReusableView()
+            return UICollectionReusableView()
         }
     }
     

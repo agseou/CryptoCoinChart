@@ -16,6 +16,7 @@ class FavoriteViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.inputViewDidLoadTrigger.value = ()
+        collectionView.reloadData()
     }
     
     override func configureHierarchy() {

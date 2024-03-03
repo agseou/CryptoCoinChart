@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0327A2D2B94B6B5001318C3 /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0327A2C2B94B6B5001318C3 /* TrendingViewModel.swift */; };
 		A03718822B90208B00AF5570 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03718812B90208B00AF5570 /* RealmModel.swift */; };
 		A03718852B90353600AF5570 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03718842B90353600AF5570 /* RealmRepository.swift */; };
 		A037188A2B90B34F00AF5570 /* ChartsInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03718892B90B34F00AF5570 /* ChartsInfoCollectionViewCell.swift */; };
@@ -43,8 +44,6 @@
 		A09E2B492B8E03ED00961823 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B482B8E03ED00961823 /* Market.swift */; };
 		A09E2B4B2B8E058400961823 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B4A2B8E058400961823 /* ChartViewModel.swift */; };
 		A09E2B4E2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B4D2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift */; };
-		A09E2B702B8EFDD500961823 /* TrendingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B6F2B8EFDD500961823 /* TrendingSection.swift */; };
-		A09E2B722B8F020D00961823 /* TempMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B712B8F020D00961823 /* TempMock.swift */; };
 		A09E2B742B8F03E500961823 /* TopRankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */; };
 		A09E2B762B8F1DAD00961823 /* SeparatorCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B752B8F1DAD00961823 /* SeparatorCollectionReusableView.swift */; };
 		A09E2B782B8F22E100961823 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */; };
@@ -56,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0327A2C2B94B6B5001318C3 /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
 		A03718812B90208B00AF5570 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		A03718842B90353600AF5570 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		A03718892B90B34F00AF5570 /* ChartsInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -88,8 +88,6 @@
 		A09E2B482B8E03ED00961823 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		A09E2B4A2B8E058400961823 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		A09E2B4D2B8EBB8800961823 /* FavoriteCollectoinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectoinViewCell.swift; sourceTree = "<group>"; };
-		A09E2B6F2B8EFDD500961823 /* TrendingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingSection.swift; sourceTree = "<group>"; };
-		A09E2B712B8F020D00961823 /* TempMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMock.swift; sourceTree = "<group>"; };
 		A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRankCollectionViewCell.swift; sourceTree = "<group>"; };
 		A09E2B752B8F1DAD00961823 /* SeparatorCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCollectionReusableView.swift; sourceTree = "<group>"; };
 		A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -208,8 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				A09E2B2E2B8DBDF600961823 /* TrendingViewController.swift */,
-				A09E2B6F2B8EFDD500961823 /* TrendingSection.swift */,
-				A09E2B712B8F020D00961823 /* TempMock.swift */,
+				A0327A2C2B94B6B5001318C3 /* TrendingViewModel.swift */,
 				A09E2B452B8DF83500961823 /* Cell */,
 			);
 			path = Trending;
@@ -405,7 +402,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A09E2B842B8F6E4700961823 /* UIViewController+Extension.swift in Sources */,
-				A09E2B722B8F020D00961823 /* TempMock.swift in Sources */,
 				A09E2B2D2B8DBCEB00961823 /* CustomNavigationController.swift in Sources */,
 				A09E2B3D2B8DC5B500961823 /* CoinAPI.swift in Sources */,
 				A09E2B492B8E03ED00961823 /* Market.swift in Sources */,
@@ -417,7 +413,6 @@
 				A03718852B90353600AF5570 /* RealmRepository.swift in Sources */,
 				A09E2B342B8DBE5E00961823 /* ProfileViewController.swift in Sources */,
 				A09E2B082B8DAA8900961823 /* BaseViewController.swift in Sources */,
-				A09E2B702B8EFDD500961823 /* TrendingSection.swift in Sources */,
 				A09E2B2F2B8DBDF600961823 /* TrendingViewController.swift in Sources */,
 				A09E2B262B8DB43000961823 /* SearchViewModel.swift in Sources */,
 				A09E2B7C2B8F281700961823 /* Trending.swift in Sources */,
@@ -431,6 +426,7 @@
 				A09E2B4B2B8E058400961823 /* ChartViewModel.swift in Sources */,
 				A09E2B0B2B8DB1B000961823 /* BaseTableViewCell.swift in Sources */,
 				A09E2B472B8DFAF600961823 /* CoinInfoBox.swift in Sources */,
+				A0327A2D2B94B6B5001318C3 /* TrendingViewModel.swift in Sources */,
 				A09E2B3B2B8DC44B00961823 /* CoinAPIManager.swift in Sources */,
 				A03718822B90208B00AF5570 /* RealmModel.swift in Sources */,
 				A09E2B442B8DF83300961823 /* MyFavoriteCollectionViewCell.swift in Sources */,

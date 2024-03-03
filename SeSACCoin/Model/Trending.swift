@@ -8,14 +8,14 @@
 import Foundation
 
 struct Trending: Decodable {
-    let coins: [items] // COIN
+    let coins: [CoinItem] // COIN
     let nfts: [Nft] // NFT
 }
 
 
 // MARK: - COIN
-struct items: Decodable {
-    let item: [Item]
+struct CoinItem: Decodable {
+    let item: Item
 }
 
 struct Item: Decodable {
@@ -24,7 +24,6 @@ struct Item: Decodable {
     let symbol: String // 코인 통화 단위
     let market_cap_rank: Int
     let thumb, small, large: String
-    let slug: String
     let data: ItemData
 }
 

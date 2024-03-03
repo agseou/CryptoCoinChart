@@ -40,7 +40,7 @@ enum CoinAPI {
     var parameter: Parameters {
         switch self {
         case .Trending:
-            ["":""]
+            [:]
         case .Search(let query):
             ["query": query]
         case .Market(let ids):
