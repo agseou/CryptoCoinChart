@@ -14,7 +14,7 @@ class RealmRepository {
     
     func toggleFavorite(coinID: String) {
         if let isExist = realm.objects(Favorite.self).filter("coinID == %@", coinID).first {
-            deleItem(isExist)
+            deleteItem(isExist)
         } else {
             if canAddFavorite() {
                 CoinAPIManager.shared.request(type: [Market].self, api: .Market(ids: coinID)) { data in
@@ -25,7 +25,7 @@ class RealmRepository {
         }
     }
     
-    // CREAT
+    // CREATE
     func createItem<T: Object>(_ item: T) {
         do {
             try realm.write {
@@ -38,8 +38,21 @@ class RealmRepository {
         print(realm.configuration.fileURL!)
     }
     
+    // CREATE LIST
+    func createList<T: Object>(_ item: [T]) {
+        do {
+            try realm.write {
+                realm.add(item, update: .all)
+                print("Realm create")
+            }
+        } catch {
+            print(error)
+        }
+        print(realm.configuration.fileURL!)
+    }
+    
     // DELETE
-    func deleItem<T: Object>(_ item: T) {
+    func deleteItem<T: Object>(_ item: T) {
         do {
             try realm.write {
                 realm.delete(item)
@@ -49,13 +62,22 @@ class RealmRepository {
         }
     }
     
+    // DELETE ALL
+    func deleteAllItem<T: Object>(ofType type: T) {
+        do {
+            try realm.write {
+                realm.delete(realm.objects(T.self))
+            }
+        } catch {
+            print(error)
+        }
+    }
     
     // 데이터 주기
     func fetchItem<T: Object>(ofType type: T.Type) -> Results<T> {
         print(realm.configuration.fileURL!)
         return realm.objects(T.self)
     }
-    
     
     // 즐겨찾기 되어있는지 유무 확인
     func isFavorite(coinID: String) -> Bool {

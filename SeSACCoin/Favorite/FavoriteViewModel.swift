@@ -12,14 +12,13 @@ class FavoriteViewModel {
     let repository = RealmRepository()
     
     var inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
-    var outputList: Observable<[Favorite]> = Observable([])
+    var favoriteList: Observable<[Favorite]> = Observable([])
     
     init() {
         inputViewDidLoadTrigger.bind { _ in
             let data = self.repository.fetchItem(ofType: Favorite.self)
-            self.outputList.value = Array(data)
+            self.favoriteList.value = Array(data)
         }
     }
-    
     
 }
