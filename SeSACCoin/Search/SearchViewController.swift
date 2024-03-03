@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import Toast
 import Kingfisher
 
 class SearchViewController: BaseViewController {
-
-    let viewModel = SearchViewModel()
     
-    let searchBar = UISearchBar()
+    let viewModel = SearchViewModel()
+    let repository = RealmRepository()
+    
+    let searchController = UISearchController()
     private let tableView = UITableView()
     
     override func viewDidLoad() {
@@ -20,17 +22,22 @@ class SearchViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func configureHierarchy() {
-        view.addSubview(searchBar)
         view.addSubview(tableView)
     }
     
     override func configureView() {
         super.configureView()
+        self.hideKeyboard()
         
         navigationItem.title = "Search"
         
-        searchBar.delegate = self
+        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -39,15 +46,11 @@ class SearchViewController: BaseViewController {
     }
     
     override func setConstraints() {
-        searchBar.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-        }
         tableView.snp.makeConstraints {
-            $0.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            $0.top.equalTo(searchBar.snp.bottom)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -67,9 +70,22 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
         let data = viewModel.searchList.value[indexPath.row]
-        cell.coininfo.nameLabel.text = data.name
+        
+        let searchText = searchController.searchBar.text ?? ""
+        
+        
+        let nameAttributedString = NSMutableAttributedString(string: data.name)
+        if !searchText.isEmpty {
+            let range = (data.name as NSString).range(of: searchText, options: .caseInsensitive)
+            nameAttributedString.addAttribute(.foregroundColor, value: UIColor.accent, range: range)
+        }
+        
+        cell.coininfo.nameLabel.attributedText = nameAttributedString
         cell.coininfo.symbolLabel.text = data.symbol
         cell.coininfo.coinImage.kf.setImage(with: URL(string: data.thumb))
+        cell.favoriteBtn.tag = indexPath.row
+        cell.favoriteBtn.addTarget(self, action:#selector(tapFavoriteBtn(_:)), for: .touchUpInside)
+        cell.favoriteBtn.setImage(UIImage(resource: repository.isFavorite(coinID: data.id) ? .btnStar : .btnStarFill), for: .normal)
         
         return cell
     }
@@ -80,4 +96,26 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc private func tapFavoriteBtn(_ sender: UIButton) {
+        
+        let btnIDX = sender.tag
+        let data = viewModel.searchList.value[btnIDX].id
+        if repository.isFavorite(coinID: data) {
+            if repository.canAddFavorite(){
+                view.makeToast("즐겨찾기에 추가 됐습니다.")
+                sender.setImage(UIImage(resource: .btnStarFill), for: .normal)
+            } else {
+                view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
+            }
+        } else {
+            view.makeToast("즐겨찾기가 해제 됐습니다.")
+            sender.setImage(UIImage(resource: .btnStar), for: .normal)
+        }
+        repository.toggleFavorite(coinID: data)
+        
+    }
+    
 }
+
+
+

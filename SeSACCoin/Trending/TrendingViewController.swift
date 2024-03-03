@@ -51,7 +51,7 @@ class TrendingViewController: BaseViewController {
     static func setMyFavoriteCollectionViewLayout() -> NSCollectionLayoutSection {
         // item
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.5),
+            widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -59,7 +59,7 @@ class TrendingViewController: BaseViewController {
         
         // group
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.2),
+            widthDimension: .fractionalWidth(0.6),
             heightDimension: .fractionalHeight(0.3)
         )
         let group = NSCollectionLayoutGroup.horizontal(
@@ -81,7 +81,8 @@ class TrendingViewController: BaseViewController {
         // section
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [header]
-        section.orthogonalScrollingBehavior = .continuous
+        section.orthogonalScrollingBehavior = .groupPaging
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 5)
         return section
         
         
@@ -97,7 +98,7 @@ class TrendingViewController: BaseViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 8, bottom: 12, trailing: 8)
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.9),
+            widthDimension: .fractionalWidth(0.8),
             heightDimension: .fractionalHeight(1.0/3.0)
         )
         
@@ -123,7 +124,8 @@ class TrendingViewController: BaseViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
         section.boundarySupplementaryItems = [header]
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 5)
+        section.interGroupSpacing = 30   
         return section
     }
     
