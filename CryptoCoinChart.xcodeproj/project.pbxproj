@@ -149,7 +149,7 @@
 		A09E2AE62B8DA9AD00961823 = {
 			isa = PBXGroup;
 			children = (
-				A09E2AF12B8DA9AD00961823 /* SeSACCoin */,
+				A09E2AF12B8DA9AD00961823 /* CryptoCoinChart */,
 				A09E2AF02B8DA9AD00961823 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -162,7 +162,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A09E2AF12B8DA9AD00961823 /* SeSACCoin */ = {
+		A09E2AF12B8DA9AD00961823 /* CryptoCoinChart */ = {
 			isa = PBXGroup;
 			children = (
 				A03718832B90352500AF5570 /* Realm */,
@@ -183,7 +183,6 @@
 				A09E2AFD2B8DA9B000961823 /* LaunchScreen.storyboard */,
 				A09E2B002B8DA9B000961823 /* Info.plist */,
 			);
-			name = SeSACCoin;
 			path = CryptoCoinChart;
 			sourceTree = "<group>";
 		};
@@ -611,7 +610,7 @@
 				DEVELOPMENT_TEAM = 47VP7M3T34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CryptoCoinChart/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "은서우";
+				INFOPLIST_KEY_CFBundleDisplayName = CryptoCoinChart;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -645,7 +644,7 @@
 				DEVELOPMENT_TEAM = 47VP7M3T34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CryptoCoinChart/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "은서우";
+				INFOPLIST_KEY_CFBundleDisplayName = CryptoCoinChart;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
