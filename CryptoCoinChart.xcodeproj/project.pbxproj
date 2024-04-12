@@ -67,7 +67,7 @@
 		A03718842B90353600AF5570 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		A03718892B90B34F00AF5570 /* ChartsInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0536C5B2B943C3800C35738 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
-		A09E2AEF2B8DA9AD00961823 /* SeSACCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09E2AEF2B8DA9AD00961823 /* CryptoCoinChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoCoinChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09E2AF22B8DA9AD00961823 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A09E2AF42B8DA9AD00961823 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A09E2AF92B8DA9AD00961823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		A09E2AF02B8DA9AD00961823 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A09E2AEF2B8DA9AD00961823 /* SeSACCoin.app */,
+				A09E2AEF2B8DA9AD00961823 /* CryptoCoinChart.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -333,9 +333,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A09E2AEE2B8DA9AD00961823 /* SeSACCoin */ = {
+		A09E2AEE2B8DA9AD00961823 /* CryptoCoinChart */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A09E2B032B8DA9B000961823 /* Build configuration list for PBXNativeTarget "SeSACCoin" */;
+			buildConfigurationList = A09E2B032B8DA9B000961823 /* Build configuration list for PBXNativeTarget "CryptoCoinChart" */;
 			buildPhases = (
 				A09E2AEB2B8DA9AD00961823 /* Sources */,
 				A09E2AEC2B8DA9AD00961823 /* Frameworks */,
@@ -345,7 +345,7 @@
 			);
 			dependencies = (
 			);
-			name = SeSACCoin;
+			name = CryptoCoinChart;
 			packageProductDependencies = (
 				A09E2B152B8DB2EE00961823 /* SnapKit */,
 				A09E2B182B8DB2FA00961823 /* Alamofire */,
@@ -356,7 +356,7 @@
 				A09E2B7E2B8F371000961823 /* DGCharts */,
 			);
 			productName = SeSACCoin;
-			productReference = A09E2AEF2B8DA9AD00961823 /* SeSACCoin.app */;
+			productReference = A09E2AEF2B8DA9AD00961823 /* CryptoCoinChart.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -374,7 +374,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A09E2AEA2B8DA9AD00961823 /* Build configuration list for PBXProject "SeSACCoin" */;
+			buildConfigurationList = A09E2AEA2B8DA9AD00961823 /* Build configuration list for PBXProject "CryptoCoinChart" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -395,7 +395,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A09E2AEE2B8DA9AD00961823 /* SeSACCoin */,
+				A09E2AEE2B8DA9AD00961823 /* CryptoCoinChart */,
 			);
 		};
 /* End PBXProject section */
@@ -671,7 +671,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A09E2AEA2B8DA9AD00961823 /* Build configuration list for PBXProject "SeSACCoin" */ = {
+		A09E2AEA2B8DA9AD00961823 /* Build configuration list for PBXProject "CryptoCoinChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A09E2B012B8DA9B000961823 /* Debug */,
@@ -680,7 +680,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A09E2B032B8DA9B000961823 /* Build configuration list for PBXNativeTarget "SeSACCoin" */ = {
+		A09E2B032B8DA9B000961823 /* Build configuration list for PBXNativeTarget "CryptoCoinChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A09E2B042B8DA9B000961823 /* Debug */,
