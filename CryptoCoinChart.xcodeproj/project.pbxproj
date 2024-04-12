@@ -183,7 +183,8 @@
 				A09E2AFD2B8DA9B000961823 /* LaunchScreen.storyboard */,
 				A09E2B002B8DA9B000961823 /* Info.plist */,
 			);
-			path = SeSACCoin;
+			name = SeSACCoin;
+			path = CryptoCoinChart;
 			sourceTree = "<group>";
 		};
 		A09E2B062B8DAA7C00961823 /* Base */ = {
@@ -609,7 +610,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 47VP7M3T34;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SeSACCoin/Info.plist;
+				INFOPLIST_FILE = CryptoCoinChart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "은서우";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -622,7 +623,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Seou.SeSACCoin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Seou.CryptoCoinChart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -643,7 +644,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 47VP7M3T34;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SeSACCoin/Info.plist;
+				INFOPLIST_FILE = CryptoCoinChart/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "은서우";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -656,7 +657,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Seou.SeSACCoin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Seou.CryptoCoinChart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
