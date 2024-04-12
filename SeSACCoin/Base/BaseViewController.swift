@@ -7,9 +7,10 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class BaseViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,9 +22,20 @@ class BaseViewController: UIViewController {
     func configureHierarchy() { }
     func configureView() {
         view.backgroundColor = .background
+        setupProfileButton()
     }
     func setConstraints() { }
-
     
-
+    private func setupProfileButton() {
+        let profileImage = UIImage(systemName: "person.crop.circle")?.withRenderingMode(.alwaysOriginal)
+        let profileButton = UIBarButtonItem(image: profileImage, style: .plain, target: self, action: #selector(tapProfileButton))
+        navigationItem.rightBarButtonItem = profileButton
+    }
+    
+    @objc private func tapProfileButton() {
+        if let tabBarController = tabBarController {
+            tabBarController.selectedIndex = 3
+        }
+    }
+    
 }

@@ -13,6 +13,7 @@ class FavoriteCollectoinViewCell: BaseCollectionViewCell {
     let coinInfo = CoinInfoBox()
     let stackView = UIStackView()
     let current_price = UILabel()
+    let labelContainer = UIView()
     let price_change_percentage = UILabel()
     
     
@@ -21,14 +22,14 @@ class FavoriteCollectoinViewCell: BaseCollectionViewCell {
         box.addSubview(coinInfo)
         box.addSubview(stackView)
         stackView.addArrangedSubview(current_price)
-        stackView.addArrangedSubview(price_change_percentage)
+        stackView.addArrangedSubview(labelContainer)
+        labelContainer.addSubview(price_change_percentage)
     }
     
     override func configureView() {
         box.layer.shadowColor = UIColor.subLabel.cgColor
         box.layer.shadowOffset = .zero
         box.layer.shadowOpacity = 0.5
-        //box.layer.shadowRadius = 3
         box.backgroundColor = .background
         DispatchQueue.main.async {
             self.box.layer.cornerRadius = 15
@@ -39,13 +40,13 @@ class FavoriteCollectoinViewCell: BaseCollectionViewCell {
         stackView.distribution = .fillEqually
         stackView.spacing = 2
         
+        labelContainer.layer.cornerRadius = 10
+        
         current_price.textColor = .mainLabel
         current_price.text = "100000000"
         
         price_change_percentage.textColor = .mainLabel
         price_change_percentage.text = "+12.13"
-        price_change_percentage.backgroundColor = .subRed
-        price_change_percentage.layer.cornerRadius = 5
     }
     
     override func setConstraints() {
@@ -60,6 +61,10 @@ class FavoriteCollectoinViewCell: BaseCollectionViewCell {
             $0.top.greaterThanOrEqualTo(coinInfo.snp.bottom).offset(30)
             $0.right.bottom.equalTo(box).inset(10)
             $0.left.equalTo(box).offset(10)
+        }
+        price_change_percentage.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(10)
+            $0.verticalEdges.equalToSuperview().inset(3)
         }
 
     }

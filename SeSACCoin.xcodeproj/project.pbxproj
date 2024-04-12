@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A0327A2D2B94B6B5001318C3 /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0327A2C2B94B6B5001318C3 /* TrendingViewModel.swift */; };
+		A0327A2F2B94EC4F001318C3 /* Number+Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0327A2E2B94EC4F001318C3 /* Number+Extesion.swift */; };
+		A0327A312B95219B001318C3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0327A302B95219B001318C3 /* Date+Extension.swift */; };
+		A0327A332B952456001318C3 /* MoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0327A322B952456001318C3 /* MoreCollectionViewCell.swift */; };
+		A0327A352B9527AE001318C3 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0327A342B9527AD001318C3 /* ProfileTableViewCell.swift */; };
 		A03718822B90208B00AF5570 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03718812B90208B00AF5570 /* RealmModel.swift */; };
 		A03718852B90353600AF5570 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03718842B90353600AF5570 /* RealmRepository.swift */; };
 		A037188A2B90B34F00AF5570 /* ChartsInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03718892B90B34F00AF5570 /* ChartsInfoCollectionViewCell.swift */; };
@@ -50,12 +54,15 @@
 		A09E2B7A2B8F23AE00961823 /* BaseCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B792B8F23AE00961823 /* BaseCollectionReusableView.swift */; };
 		A09E2B7C2B8F281700961823 /* Trending.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B7B2B8F281700961823 /* Trending.swift */; };
 		A09E2B7F2B8F371000961823 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = A09E2B7E2B8F371000961823 /* DGCharts */; };
-		A09E2B812B8F444200961823 /* NumberFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B802B8F444200961823 /* NumberFormatterManager.swift */; };
 		A09E2B842B8F6E4700961823 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E2B832B8F6E4700961823 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A0327A2C2B94B6B5001318C3 /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
+		A0327A2E2B94EC4F001318C3 /* Number+Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extesion.swift"; sourceTree = "<group>"; };
+		A0327A302B95219B001318C3 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		A0327A322B952456001318C3 /* MoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0327A342B9527AD001318C3 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		A03718812B90208B00AF5570 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		A03718842B90353600AF5570 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
 		A03718892B90B34F00AF5570 /* ChartsInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -93,7 +100,6 @@
 		A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		A09E2B792B8F23AE00961823 /* BaseCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionReusableView.swift; sourceTree = "<group>"; };
 		A09E2B7B2B8F281700961823 /* Trending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trending.swift; sourceTree = "<group>"; };
-		A09E2B802B8F444200961823 /* NumberFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterManager.swift; sourceTree = "<group>"; };
 		A09E2B832B8F6E4700961823 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0327A362B9527B0001318C3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A0327A342B9527AD001318C3 /* ProfileTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		A03718832B90352500AF5570 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				A09E2B232B8DB3EE00961823 /* Observable.swift */,
-				A09E2B802B8F444200961823 /* NumberFormatterManager.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -252,6 +265,7 @@
 		A09E2B322B8DBE3200961823 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				A0327A362B9527B0001318C3 /* Cell */,
 				A09E2B332B8DBE5E00961823 /* ProfileViewController.swift */,
 			);
 			path = Profile;
@@ -293,6 +307,7 @@
 				A09E2B732B8F03E500961823 /* TopRankCollectionViewCell.swift */,
 				A09E2B752B8F1DAD00961823 /* SeparatorCollectionReusableView.swift */,
 				A09E2B772B8F22E100961823 /* HeaderCollectionViewCell.swift */,
+				A0327A322B952456001318C3 /* MoreCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -308,7 +323,9 @@
 		A09E2B822B8F6E1F00961823 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A0327A2E2B94EC4F001318C3 /* Number+Extesion.swift */,
 				A09E2B832B8F6E4700961823 /* UIViewController+Extension.swift */,
+				A0327A302B95219B001318C3 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -405,10 +422,10 @@
 				A09E2B2D2B8DBCEB00961823 /* CustomNavigationController.swift in Sources */,
 				A09E2B3D2B8DC5B500961823 /* CoinAPI.swift in Sources */,
 				A09E2B492B8E03ED00961823 /* Market.swift in Sources */,
-				A09E2B812B8F444200961823 /* NumberFormatterManager.swift in Sources */,
 				A037188A2B90B34F00AF5570 /* ChartsInfoCollectionViewCell.swift in Sources */,
 				A09E2B282B8DB5B800961823 /* SearchTableViewCell.swift in Sources */,
 				A09E2B132B8DB2CE00961823 /* SearchViewController.swift in Sources */,
+				A0327A352B9527AE001318C3 /* ProfileTableViewCell.swift in Sources */,
 				A09E2B2B2B8DBCC200961823 /* CustomTabBarController.swift in Sources */,
 				A03718852B90353600AF5570 /* RealmRepository.swift in Sources */,
 				A09E2B342B8DBE5E00961823 /* ProfileViewController.swift in Sources */,
@@ -416,8 +433,10 @@
 				A09E2B2F2B8DBDF600961823 /* TrendingViewController.swift in Sources */,
 				A09E2B262B8DB43000961823 /* SearchViewModel.swift in Sources */,
 				A09E2B7C2B8F281700961823 /* Trending.swift in Sources */,
+				A0327A2F2B94EC4F001318C3 /* Number+Extesion.swift in Sources */,
 				A09E2AF32B8DA9AD00961823 /* AppDelegate.swift in Sources */,
 				A0536C5C2B943C3800C35738 /* FavoriteViewModel.swift in Sources */,
+				A0327A312B95219B001318C3 /* Date+Extension.swift in Sources */,
 				A09E2B242B8DB3EE00961823 /* Observable.swift in Sources */,
 				A09E2B742B8F03E500961823 /* TopRankCollectionViewCell.swift in Sources */,
 				A09E2B312B8DBE0F00961823 /* FavoriteViewController.swift in Sources */,
@@ -432,6 +451,7 @@
 				A09E2B442B8DF83300961823 /* MyFavoriteCollectionViewCell.swift in Sources */,
 				A09E2B7A2B8F23AE00961823 /* BaseCollectionReusableView.swift in Sources */,
 				A09E2AF52B8DA9AD00961823 /* SceneDelegate.swift in Sources */,
+				A0327A332B952456001318C3 /* MoreCollectionViewCell.swift in Sources */,
 				A09E2B762B8F1DAD00961823 /* SeparatorCollectionReusableView.swift in Sources */,
 				A09E2B392B8DC40A00961823 /* Search.swift in Sources */,
 				A09E2B0D2B8DB1F400961823 /* BaseCollectionViewCell.swift in Sources */,
@@ -590,6 +610,7 @@
 				DEVELOPMENT_TEAM = 47VP7M3T34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSACCoin/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "은서우";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -623,6 +644,7 @@
 				DEVELOPMENT_TEAM = 47VP7M3T34;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSACCoin/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "은서우";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

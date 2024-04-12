@@ -34,3 +34,14 @@ class Favorite: Object {
         self.price_change_percentage = price_change_percentage
     }
 }
+
+class UserProfile: Object {
+    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var profileImagePath: String?
+
+    convenience init(profileImagePath: String? = nil) {
+        self.init()
+        self.profileImagePath = profileImagePath
+    }
+    
+}

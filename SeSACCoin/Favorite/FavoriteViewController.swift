@@ -40,6 +40,10 @@ class FavoriteViewController: BaseViewController {
     
     @objc private func refreshFavoriteList() {
         viewModel.inputViewDidLoadTrigger.value = ()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 1초뒤 새로고침
+            self.collectionView.refreshControl?.endRefreshing()
+            self.collectionView.reloadData()
+        }
     }
     
     override func setConstraints() {
@@ -72,8 +76,10 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         cell.coinInfo.nameLabel.text = data.name
         cell.coinInfo.symbolLabel.text = data.symbol
         cell.coinInfo.coinImage.kf.setImage(with: URL(string: data.image))
-        cell.current_price.text = data.current_price.description
-        cell.price_change_percentage.text = data.price_change_percentage.description
+        cell.current_price.text = data.current_price.formattedWon()
+        cell.price_change_percentage.text = data.price_change_percentage.formattedPercent()
+        cell.price_change_percentage.textColor = data.price_change_percentage.isPositive() ? .redLabel : .blueLabel
+        cell.labelContainer.backgroundColor = data.price_change_percentage.isPositive() ? .subRed : .subBlue
         
         return cell
     }
@@ -123,7 +129,7 @@ extension FavoriteViewController: UICollectionViewDragDelegate, UICollectionView
             let sourceIndexPath = sourceItem.sourceIndexPath
         else { return }
         
-        collectionView.performBatchUpdates { 
+        collectionView.performBatchUpdates {
             self.move(sourceIndexPath: sourceIndexPath, destinationIndexPath: destinationIndexPath)
         } completion: { finish in
             print("finish:", finish)

@@ -11,6 +11,21 @@ import Charts
 import DGCharts
 import Toast
 
+class CircleMarker: MarkerView {
+    var color: UIColor = .accent
+    var radius: CGFloat = 5
+
+    override func draw(context: CGContext, point: CGPoint) {
+        super.draw(context: context, point: point)
+
+        // 마커의 배경 원 그리기
+        context.setFillColor(color.cgColor)
+        context.beginPath()
+        context.addArc(center: point, radius: radius, startAngle: 0, endAngle: .pi * 2, clockwise: true)
+        context.fillPath()
+    }
+}
+
 class ChartViewController: BaseViewController {
     
     // 데이터를 불러오기 위한 id 받기
@@ -41,24 +56,41 @@ class ChartViewController: BaseViewController {
     private var coinChartView = LineChartView()
     var chartValue: [Double] = []
     
+    private var stopLoadingData = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.inputID.value = ids
+        loadAndScheduleData()
+    }
+    
+    func loadAndScheduleData() {
+        viewModel.fetchData(id: ids)
         viewModel.resultData.bind { value in
             guard let value = value else { return }
             self.image.kf.setImage(with: URL(string: value[0].image))
             self.name.text = value[0].name
-            self.current_price.text =  NumberFormatterManager.shared.calculator(value[0].current_price)
-            self.price_change_percentage_24h.text = String(value[0].price_change_percentage_24h)
+            self.current_price.text = value[0].current_price.formattedWon()
+            self.price_change_percentage_24h.text = value[0].price_change_percentage_24h.formattedPercent()
+            self.price_change_percentage_24h.textColor = value[0].price_change_percentage_24h.isPositive() ? .redLabel : .blueLabel
             self.chartValue = value[0].sparkline_in_7d.price
-            self.updateLabel.text = value[0].last_updated
-            self.marketData[0].value = NumberFormatterManager.shared.calculator(value[0].high_24h)
-            self.marketData[1].value = NumberFormatterManager.shared.calculator(value[0].low_24h)
-            self.marketData[2].value = NumberFormatterManager.shared.calculator(value[0].ath)
-            self.marketData[3].value = NumberFormatterManager.shared.calculator(value[0].atl)
+            self.updateLabel.text = value[0].last_updated.formattedDateString() + " 업데이트"
+            self.marketData[0].value = value[0].high_24h.formattedWon()
+            self.marketData[1].value = value[0].low_24h.formattedWon()
+            self.marketData[2].value = value[0].ath.formattedWon()
+            self.marketData[3].value = value[0].atl.formattedWon()
             self.collectionView.reloadData()
             self.setData()
         }
+        guard !self.stopLoadingData else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.loadAndScheduleData()
+            print("!!!")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopLoadingData = true
     }
     
     override func configureHierarchy() {
@@ -90,7 +122,6 @@ class ChartViewController: BaseViewController {
         current_price.font = .systemFont(ofSize: 32, weight: .black)
         
         price_change_percentage_24h.text = "코인 변동폭"
-        price_change_percentage_24h.textColor = .redLabel
         
         // collectionView
         collectionView.delegate = self
@@ -111,6 +142,9 @@ class ChartViewController: BaseViewController {
         coinChartView.pinchZoomEnabled = false
         coinChartView.doubleTapToZoomEnabled = false
         coinChartView.delegate = self
+        
+        //
+        updateLabel.textColor = .subLabel
         
     }
     
@@ -203,7 +237,7 @@ extension ChartViewController: ChartViewDelegate {
             datas.append(entry)
         }
         
-        // LineChartDataSet 객체 생성
+        // LineChartDataSet
         let dataSet = LineChartDataSet(entries: datas, label: "Your Label Here")
         dataSet.drawCirclesEnabled = false
         dataSet.mode = .cubicBezier
@@ -216,18 +250,22 @@ extension ChartViewController: ChartViewDelegate {
         dataSet.setColor(.accent)
         dataSet.drawFilledEnabled = true
         dataSet.setDrawHighlightIndicators(true)
+        dataSet.drawHorizontalHighlightIndicatorEnabled = false
+        dataSet.drawVerticalHighlightIndicatorEnabled = false
         dataSet.highlightColor = .accent
         
-        // 차트에 데이터 세트를 추가하자~
+        let marker = CircleMarker()
+        marker.chartView = coinChartView
+        coinChartView.marker = marker
+        
+        // 차트에 데이터 세트를 추가
         let data = LineChartData(dataSet: dataSet)
         data.setDrawValues(false)
-        
         coinChartView.data = data
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print(entry)
-        
+        coinChartView.marker?.refreshContent(entry: entry, highlight: highlight)
     }
-    
 }

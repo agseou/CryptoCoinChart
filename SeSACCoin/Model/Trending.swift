@@ -41,6 +41,7 @@ struct Nft: Decodable {
     let name: String // NFT 이름
     let symbol: String // NFT 통화 단위
     let thumb: String // NFT 아이콘 리소스
+    let floor_price_24h_percentage_change: Double
     let data: NftData
 }
 

@@ -19,7 +19,7 @@ class ChartViewModel {
         }
     }
     
-    private func fetchData(id: String) {
+    func fetchData(id: String) {
         CoinAPIManager.shared.request(type: [Market].self, api: .Market(ids: id)) { data in
             self.resultData.value = data
         }

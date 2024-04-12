@@ -16,11 +16,11 @@ enum TrendingSection {
     
     var header: String {
         switch self {
-        case .favorites(let array):
+        case .favorites(_):
             return "My Favorite"
-        case .coinTopRank(let array):
+        case .coinTopRank(_):
             return "Top15 Coin"
-        case .nftTopRank(let array):
+        case .nftTopRank(_):
             return "Top7 NFT"
         }
     }
@@ -31,7 +31,7 @@ class TrendingViewController: BaseViewController {
     
     let viewModel = TrendingViewModel()
     private var dataSource: [TrendingSection] = []
-
+    
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { section, env -> NSCollectionLayoutSection? in
         switch self.dataSource[section] {
         case .favorites:
@@ -52,6 +52,12 @@ class TrendingViewController: BaseViewController {
         print(dataSource)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.inputViewDidLoadTrigger.value = ()
+    }
+    
     override func configureHierarchy() {
         view.addSubview(collectionView)
     }
@@ -61,8 +67,10 @@ class TrendingViewController: BaseViewController {
         
         navigationItem.title = "Crypto Coin"
         
+        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MyFavoriteCollectionViewCell.self, forCellWithReuseIdentifier: "MyFavoriteCollectionViewCell")
+        collectionView.register(MoreCollectionViewCell.self, forCellWithReuseIdentifier: "MoreCollectionViewCell")
         collectionView.register(TopRankCollectionViewCell.self, forCellWithReuseIdentifier: "TopRankCollectionViewCell")
         collectionView.register(HeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionViewCell")
     }
@@ -159,7 +167,7 @@ class TrendingViewController: BaseViewController {
 
 
 // MARK: - UICollectionViewDataSourcce
-extension TrendingViewController: UICollectionViewDataSource {
+extension TrendingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     // numberOfSections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -170,7 +178,7 @@ extension TrendingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch dataSource[section] {
         case .favorites(let items):
-            return items.count
+            return min(items.count, 3) + (items.count > 3 ? 1 : 0)
         case .coinTopRank(let items):
             return items.count
         case .nftTopRank(let items):
@@ -182,42 +190,51 @@ extension TrendingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch self.dataSource[indexPath.section] {
         case .favorites(let items):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyFavoriteCollectionViewCell", for: indexPath) as! MyFavoriteCollectionViewCell
-            
-            let data = items[indexPath.item]
-            
-            cell.coinInfo.coinImage.kf.setImage(with: URL(string: data.image))
-            cell.coinInfo.nameLabel.text = data.name
-            cell.coinInfo.symbolLabel.text = data.symbol
-            cell.price.text = data.current_price.description
-            cell.price_change_percentage.text = data.price_change_percentage.description
-            
-            return cell
-        case .coinTopRank(let group):
+            if indexPath.item == 3 && items.count > 3 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoreCollectionViewCell", for: indexPath) as! MoreCollectionViewCell
+                
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyFavoriteCollectionViewCell", for: indexPath) as! MyFavoriteCollectionViewCell
+                
+                let data = items[indexPath.item]
+                
+                cell.coinInfo.coinImage.kf.setImage(with: URL(string: data.image))
+                cell.coinInfo.nameLabel.text = data.name
+                cell.coinInfo.symbolLabel.text = data.symbol
+                cell.price.text = data.current_price.formattedWon()
+                cell.price_change_percentage.text = data.price_change_percentage.formattedPercent()
+                cell.price_change_percentage.textColor = data.price_change_percentage.isPositive() ? .redLabel : .blueLabel
+                
+                return cell
+            }
+        case .coinTopRank(let items):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopRankCollectionViewCell", for: indexPath) as! TopRankCollectionViewCell
             
-            let data = group[indexPath.item]
+            let data = items[indexPath.item]
             
             cell.rank.text = String(indexPath.item + 1)
             cell.coinInfo.coinImage.kf.setImage(with: URL(string: data.small))
             cell.coinInfo.nameLabel.text = data.name
             cell.coinInfo.symbolLabel.text = data.symbol
             cell.price.text = data.data.price
-            cell.price_change_percentage.text = data.data.price_change_percentage_24h.krw.description
+            cell.price_change_percentage.text = data.data.price_change_percentage_24h.krw.formattedPercent()
+            cell.price_change_percentage.textColor = data.data.price_change_percentage_24h.krw.isPositive() ? .redLabel : .blueLabel
             
             return cell
             
-        case .nftTopRank(let group):
+        case .nftTopRank(let items):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TopRankCollectionViewCell", for: indexPath) as! TopRankCollectionViewCell
             
-            let data = group[indexPath.item]
+            let data = items[indexPath.item]
             
             cell.rank.text = String(indexPath.item + 1)
             cell.coinInfo.coinImage.kf.setImage(with: URL(string: data.thumb))
             cell.coinInfo.nameLabel.text = data.name
             cell.coinInfo.symbolLabel.text = data.symbol
-            cell.price.text = data.data.floor_price.description
-            cell.price_change_percentage.text = data.data.floor_price_in_usd_24h_percentage_change.description
+            cell.price.text = data.data.floor_price
+            cell.price_change_percentage.text = data.floor_price_24h_percentage_change.formattedPercent()
+            cell.price_change_percentage.textColor = data.floor_price_24h_percentage_change.isPositive() ? .redLabel : .blueLabel
             
             return cell
         }
@@ -234,6 +251,25 @@ extension TrendingViewController: UICollectionViewDataSource {
             return header
         default:
             return UICollectionReusableView()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch dataSource[indexPath.section] {
+        case .favorites(let items):
+            if indexPath.item == 3 && items.count > 3 {
+                tabBarController?.selectedIndex = 2
+            } else {
+                let vc = ChartViewController()
+                vc.ids = items[indexPath.item].coinID
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        case .coinTopRank(let items):
+            let vc = ChartViewController()
+            vc.ids = items[indexPath.item].id
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
         }
     }
     

@@ -32,7 +32,7 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell {
         stackView.distribution = .fillEqually
         
         price.text = "1234원"
-        price.textColor = .mainLabel
+        price.textColor = .secondLabel
         
         price_change_percentage.text = "100%"
         price_change_percentage.textColor = .redLabel

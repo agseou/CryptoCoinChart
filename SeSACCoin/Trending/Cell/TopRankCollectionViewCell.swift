@@ -24,7 +24,7 @@ class TopRankCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
-        rank.textColor = .mainLabel
+        rank.textColor = .secondLabel
         rank.font = .systemFont(ofSize: 30, weight: .black)
         rank.text = "1"
         
@@ -32,8 +32,10 @@ class TopRankCollectionViewCell: BaseCollectionViewCell {
         stackView.distribution = .fillEqually
         stackView.spacing = 2
         stackView.alignment = .trailing
+        
+        coinInfo.nameLabel.textColor = .mainLabel
      
-        price.textColor = .mainLabel
+        price.textColor = .secondLabel
         price.text = "$0.417"
         
         price_change_percentage.textColor = .redLabel

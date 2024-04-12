@@ -63,7 +63,7 @@ class RealmRepository {
     }
     
     // DELETE ALL
-    func deleteAllItem<T: Object>(ofType type: T) {
+    func deleteAllItem<T: Object>(ofType type: T.Type) {
         do {
             try realm.write {
                 realm.delete(realm.objects(T.self))
