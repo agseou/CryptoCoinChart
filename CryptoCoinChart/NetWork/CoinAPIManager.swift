@@ -14,22 +14,16 @@ class CoinAPIManager {
     
     private init() { }
     
+    @available(iOS 15.0, *)
     func request<T: Decodable>(type: T.Type,
-                               api: CoinAPI,
-                               completionHandler: @escaping ((T) -> Void)) {
+                               api: CoinAPI) async throws -> T {
     
-        AF.request(api.endpoint, 
+        return try await AF.request(api.endpoint,
                    method: api.method,
                    parameters: api.parameter,
                    encoding: URLEncoding(destination: .queryString),
-                   headers: api.header).responseDecodable(of: T.self) { respose in
-            switch respose.result {
-            case .success(let success):
-                completionHandler(success)
-            case .failure(let failure):
-                print(failure)
-            }
+                   headers: api.header)
+                .serializingDecodable(T.self)
+                .value
         }
-        
-    }
 }

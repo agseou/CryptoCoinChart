@@ -20,7 +20,9 @@ class SearchViewModel {
     }
     
     private func fetchRequest(query: String) {
-        CoinAPIManager.shared.request(type: Search.self, api: .Search(query: query)) { value in
+        Task {
+            let value = try await CoinAPIManager.shared.request(type: Search.self, api: .Search(query: query))
+            
             self.searchList.value = value.coins
         }
     }
